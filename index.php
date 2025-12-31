@@ -18,12 +18,12 @@ $username = $isLoggedIn ? $_SESSION['username'] : null;
         <script src="scripts/script.js"></script>
      
         <div id="header">
-            <img src="images/logo.png" alt="Logo"/>
+            <img src="images/logo.svg" alt="Logo"/>
             <h1>Welcome to my website</h1>
             <div class="user-profile">
                 <?php if ($isLoggedIn): ?>
                     <!-- Show username and logout button if logged in -->
-                    <img src="images/user.png" alt="User Profile"/>
+                    <img src="images/user.svg" alt="User Profile"/>
                     <span>Welcome, <?php echo htmlspecialchars($username); ?></span>
                     <form action="logout.php" method="POST" style="display: inline;">
                         <button type="submit">Logout</button>

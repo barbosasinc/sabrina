@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-header('Content-Type: application/json');
+//header('Content-Type: application/json');
 
 try {
     $host = 'localhost';
