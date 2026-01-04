@@ -2,7 +2,7 @@ let API_BASE;
 
 async function loadConfig() {
     try {
-        const res = await fetch('config.json');
+        const res = await fetch('/etc/secrets/config.json');
         const config = await res.json();
         API_BASE = config.API_BASE;
     } catch (err) {
