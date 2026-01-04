@@ -37,7 +37,6 @@
     <script>
         document.getElementById('signup-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            await loadConfig();
             const errorEl = document.getElementById('error');
             errorEl.style.display = 'none';
             const username = document.getElementById('username').value.trim();

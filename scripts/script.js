@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function renderLoggedOut() {
         userProfile.innerHTML = `<button id="btn-login">Login</button>`;
-        userProfile.innerHTML = `<button id="btn-signup">Signup</button>`;
+        userProfile.innerHTML += `<button id="btn-signup">Signup</button>`;
         document.getElementById('btn-login').addEventListener('click', () => {
             // Keep compatibility with existing PHP pages until converted
             window.location.href = 'login.html';
