@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check logged-in user
     (async () => {
         try {
-            const res = await fetch('/api/user', { credentials: 'include' });
+            const res = await fetch('https://backend-sabrina.onrender.com/api/user', { credentials: 'include' });
             if (res.ok) {
                 const data = await res.json();
                 if (data && data.username) {
