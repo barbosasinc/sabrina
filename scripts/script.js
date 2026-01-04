@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         `;
         document.getElementById('btn-logout').addEventListener('click', async () => {
             try {
-                const res = await fetch(`${API_BASE}/api/logout`, { method: 'POST', credentials: 'include' });
+                const res = await fetch(`${window.API_BASE}/api/logout`, { method: 'POST', credentials: 'include' });
                 if (res.ok) {
                     window.location.reload();
                 } else {
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Check logged-in user
     (async () => {
         try {
-            const res = await fetch(`${API_BASE}/api/user`, { credentials: 'include' });
+            const res = await fetch(`${window.API_BASE}/api/user`, { credentials: 'include' });
             if (res.ok) {
                 const data = await res.json();
                 if (data && data.username) {
