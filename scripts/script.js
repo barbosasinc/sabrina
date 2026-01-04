@@ -1,11 +1,23 @@
-document.addEventListener('DOMContentLoaded', () => {
+let API_BASE;
+
+async function loadConfig() {
+    try {
+        const res = await fetch('config.json');
+        const config = await res.json();
+        API_BASE = config.API_BASE;
+    } catch (err) {
+        console.error('Failed to load config', err);
+        API_BASE = 'http://localhost:3000'; // Fallback
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadConfig(); // Load config first
     const userProfile = document.getElementById('user-profile');
 
     async function renderLoggedOut() {
-        userProfile.innerHTML = `
-            <button id="btn-login">Login</button>
-            <button id="btn-signup">Signup</button>
-        `;
+        userProfile.innerHTML = `<button id="btn-login">Login</button>`;
+        userProfile.innerHTML = `<button id="btn-signup">Signup</button>`;
         document.getElementById('btn-login').addEventListener('click', () => {
             // Keep compatibility with existing PHP pages until converted
             window.location.href = 'login.html';
@@ -23,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         document.getElementById('btn-logout').addEventListener('click', async () => {
             try {
-                const res = await fetch(`${window.API_BASE}/api/logout`, { method: 'POST', credentials: 'include' });
+                const res = await fetch(`${API_BASE}/api/logout`, { method: 'POST', credentials: 'include' });
                 if (res.ok) {
                     window.location.reload();
                 } else {
@@ -38,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check logged-in user
     (async () => {
         try {
-            const res = await fetch(`${window.API_BASE}/api/user`, { credentials: 'include' });
+            const res = await fetch(`${API_BASE}/api/user`, { credentials: 'include' });
             if (res.ok) {
                 const data = await res.json();
                 if (data && data.username) {
