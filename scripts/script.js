@@ -1,18 +1,6 @@
-let API_BASE;
-
-async function loadConfig() {
-    try {
-        const res = await fetch('config.json');
-        const config = await res.json();
-        API_BASE = config.API_BASE;
-    } catch (err) {
-        console.error('Failed to load config', err);
-        API_BASE = 'http://localhost:3000'; // Fallback
-    }
-}
 
 document.addEventListener('DOMContentLoaded', async () => {
-    await loadConfig(); // Load config first
+    // Load config from external file if needed
     const userProfile = document.getElementById('user-profile');
 
     async function renderLoggedOut() {
