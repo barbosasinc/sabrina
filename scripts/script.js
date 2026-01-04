@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         document.getElementById('btn-logout').addEventListener('click', async () => {
             try {
-                const res = await fetch('/api/logout', { method: 'POST', credentials: 'include' });
+                const res = await fetch('https://backend-sabrina.onrender.com/api/logout', { method: 'POST', credentials: 'include' });
                 if (res.ok) {
                     window.location.reload();
                 } else {
